@@ -1,5 +1,6 @@
 import { createGlobalStyle } from 'styled-components';
 import { reset } from 'styled-reset';
+import { theme } from 'styles/theme';
 
 export const GlobalStyle = createGlobalStyle`
   ${reset}
@@ -90,6 +91,10 @@ export const GlobalStyle = createGlobalStyle`
     font-size: 100%;
     font: inherit;
     vertical-align: baseline;
+  }
+  html {
+    font-size: 10px;
+    color: ${theme.colors.gray.dark};
   }
   body,
   body *,
