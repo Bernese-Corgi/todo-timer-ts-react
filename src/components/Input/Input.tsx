@@ -1,4 +1,5 @@
 import React from 'react';
+import { InputStyle } from './Input.styled';
 
 type InputProps = {
   type: string;
@@ -7,7 +8,7 @@ type InputProps = {
 const Input = ({ type }: InputProps) => {
   return (
     <>
-      <input type={type} />
+      <InputStyle type={type} />
     </>
   );
 };
