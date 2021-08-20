@@ -1,4 +1,3 @@
-// global-style.ts
 import { createGlobalStyle } from 'styled-components';
 import { reset } from 'styled-reset';
 
@@ -107,7 +106,8 @@ export const GlobalStyle = createGlobalStyle`
     -moz-osx-font-smoothing: grayscale;
   }
   h1, h2, h3, h4, h5, h6 {
-    /* font-family: ; */
+    font-family: 'Raleway';
+    font-weight: 600;
   }
   a {
     color: inherit;
