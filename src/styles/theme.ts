@@ -64,9 +64,9 @@ const margins = {
 };
 
 const paddings = {
-  sm: '0.5rem',
+  sm: '0.8rem',
   base: '1rem',
-  lg: '2rem',
+  lg: '1.5rem',
   xl: '3rem',
 };
 
