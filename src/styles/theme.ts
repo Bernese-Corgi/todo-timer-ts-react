@@ -40,7 +40,7 @@ const fonts = {
   weight: {
     light: 200,
     normal: 400,
-    bold: 600,
+    bold: 700,
   },
 };
 

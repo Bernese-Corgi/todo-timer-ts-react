@@ -111,8 +111,8 @@ export const GlobalStyle = createGlobalStyle`
     -moz-osx-font-smoothing: grayscale;
   }
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'Raleway';
-    font-weight: 600;
+    font-family: ${theme.fonts.family.title};
+    font-weight: ${theme.fonts.weight.bold};
   }
   a {
     color: inherit;
