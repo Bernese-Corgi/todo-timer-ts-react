@@ -139,6 +139,9 @@ export const GlobalStyle = createGlobalStyle`
     width: 100%;
     height: 100%;
   }
+  svg {
+    color: ${theme.colors.gray.light};
+  }
   textarea {
     resize: none;
   }
