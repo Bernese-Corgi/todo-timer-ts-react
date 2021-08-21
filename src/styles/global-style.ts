@@ -142,9 +142,6 @@ export const GlobalStyle = createGlobalStyle`
   textarea {
     resize: none;
   }
-  svg {
-    pointer-events: none;
-  }
   blockquote,
   q {
     quotes: none;
