@@ -7,6 +7,12 @@ const handleColorType = (shape: string | undefined) => {
       return theme.colors.green;
     case 'eraser':
       return theme.colors.red;
+    case 'checked-circle':
+      return theme.colors.blue;
+    case 'checked-star':
+      return theme.colors.yellow;
+    case 'checked-like':
+      return theme.colors.red;
     default:
       return theme.colors.gray.dark;
   }
