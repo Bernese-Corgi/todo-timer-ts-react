@@ -2,16 +2,17 @@ import { DefaultTheme } from 'styled-components';
 
 const colors = {
   primary: {
-    medium: '#D2B48C',
+    base: '#D2B48C',
     light: '#DFD9D3',
     dark: '#645645',
   },
   secondary: {
-    medium: '#7B86AA',
+    base: '#7B86AA',
     light: '#BFC8EA',
     dark: '#17243B',
   },
   gray: {
+    base: '#a5a3a4',
     light: '#DCDCDC',
     dark: '#545051',
   },
@@ -74,6 +75,13 @@ const boxShadow = {
   default: '0 0.4em 1.5em rgba(0, 0, 0, 0.2)',
 };
 
+const borders = {
+  radius: {
+    round: '50px',
+    square: '4px',
+  },
+};
+
 export const theme: DefaultTheme = {
   colors,
   fonts,
@@ -82,4 +90,5 @@ export const theme: DefaultTheme = {
   margins,
   paddings,
   boxShadow,
+  borders,
 };
