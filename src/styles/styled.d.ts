@@ -4,16 +4,17 @@ declare module 'styled-components' {
   export interface DefaultTheme {
     colors: {
       primary: {
-        medium: string;
+        base: string;
         light: string;
         dark: string;
       };
       secondary: {
-        medium: string;
+        base: string;
         light: string;
         dark: string;
       };
       gray: {
+        base: string;
         light: string;
         dark: string;
       };
@@ -68,6 +69,12 @@ declare module 'styled-components' {
     };
     boxShadow: {
       default: string;
+    };
+    borders: {
+      radius: {
+        round: string;
+        square: string;
+      };
     };
   }
 }
