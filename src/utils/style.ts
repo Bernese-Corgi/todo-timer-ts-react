@@ -1,6 +1,6 @@
 import { theme } from './../styles/theme';
 
-const { colors, fonts, paddings } = theme;
+const { colors, fonts, paddings, margins } = theme;
 
 export const handleHoverColorType = (shape: string | undefined) => {
   switch (shape) {
@@ -72,5 +72,35 @@ export const handleFontSize = (size: string | undefined) => {
       return fonts.size.xl;
     default:
       return fonts.size.base;
+  }
+};
+
+export const handlePaddingSize = (size: string | undefined) => {
+  switch (size) {
+    case 'sm':
+      return paddings.sm;
+    case 'base':
+      return paddings.base;
+    case 'lg':
+      return paddings.lg;
+    case 'xl':
+      return paddings.xl;
+    default:
+      return paddings.base;
+  }
+};
+
+export const handleMarginSize = (size: string | undefined) => {
+  switch (size) {
+    case 'sm':
+      return margins.sm;
+    case 'base':
+      return margins.base;
+    case 'lg':
+      return margins.lg;
+    case 'xl':
+      return margins.xl;
+    default:
+      return margins.base;
   }
 };
