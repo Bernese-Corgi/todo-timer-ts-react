@@ -1,14 +1,25 @@
 import React, { ChangeEvent } from 'react';
 import { InputStyle } from './Input.styled';
 
-type InputProps = {
+export type InputProps = InputStyleProps & {
   type: string;
   value: string;
   onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
 };
 
-const Input = ({ type, value, onChange }: InputProps) => {
-  return <InputStyle value={value} onChange={onChange} type={type} />;
+export type InputStyleProps = {
+  inputSize?: string;
+};
+
+const Input = ({ type, value, onChange, inputSize }: InputProps) => {
+  return (
+    <InputStyle
+      value={value}
+      onChange={onChange}
+      type={type}
+      inputSize={inputSize}
+    />
+  );
 };
 
 Input.defaultProps = {
