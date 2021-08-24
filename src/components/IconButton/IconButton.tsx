@@ -6,7 +6,7 @@ export type IconButtonProps = IconButtonStyleProps & {
   type: 'button' | 'submit' | 'reset';
   shape: string;
   color?: string;
-  onClick: () => void;
+  onClick?: () => void;
 };
 
 export type IconButtonStyleProps = {
