@@ -1,6 +1,6 @@
 import { theme } from './../styles/theme';
 
-const { colors, fonts } = theme;
+const { colors, fonts, paddings } = theme;
 
 export const handleHoverColorType = (shape: string | undefined) => {
   switch (shape) {
@@ -60,7 +60,7 @@ export const handleColorType = (color: string | undefined) => {
   }
 };
 
-export const handleIconSize = (size: string | undefined) => {
+export const handleFontSize = (size: string | undefined) => {
   switch (size) {
     case 'sm':
       return fonts.size.sm;
