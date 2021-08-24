@@ -1,14 +1,14 @@
 import IconButton from 'components/IconButton/IconButton';
 import Input from 'components/Input/Input';
 import React, { ChangeEvent, FormEvent, useState } from 'react';
-import { TodoInputWrapper } from './TodoInput.styled';
+import { TodoAddWrapper } from './TodoAdd.styled';
 
-export type TodoInputProps = {
+export type TodoAddProps = {
   inputSize?: string;
   onInput: (value: string) => void;
 };
 
-const TodoInput = ({ inputSize, onInput }: TodoInputProps) => {
+const TodoAdd = ({ inputSize, onInput }: TodoAddProps) => {
   const size = 'base';
   const [value, setValue] = useState('');
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -23,7 +23,7 @@ const TodoInput = ({ inputSize, onInput }: TodoInputProps) => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <TodoInputWrapper inputSize={inputSize}>
+      <TodoAddWrapper inputSize={inputSize}>
         <Input
           type="text"
           value={value}
@@ -36,9 +36,9 @@ const TodoInput = ({ inputSize, onInput }: TodoInputProps) => {
           color="secondary"
           iconSize={size}
         />
-      </TodoInputWrapper>
+      </TodoAddWrapper>
     </form>
   );
 };
 
-export default TodoInput;
+export default TodoAdd;

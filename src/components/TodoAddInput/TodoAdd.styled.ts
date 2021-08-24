@@ -17,11 +17,11 @@ const handleWidthSize = (size: string | undefined) => {
   }
 };
 
-type TodoInputWrapperProps = {
+type TodoAddWrapperProps = {
   inputSize?: string;
 };
 
-export const TodoInputWrapper = styled.div<TodoInputWrapperProps>`
+export const TodoAddWrapper = styled.div<TodoAddWrapperProps>`
   ${({ theme }) => theme.flexes.row('start')};
   width: ${({ inputSize }) => handleWidthSize(inputSize)};
   padding: ${({ inputSize }) => handlePaddingSize(inputSize)};
