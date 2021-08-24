@@ -3,7 +3,7 @@ import { Svg } from './Icon.styled';
 import Sprite from './assets/sprites.svg';
 
 export type IconProps = {
-  shape?: string;
+  shape: string;
   color?: string;
   iconSize?: string;
 };
