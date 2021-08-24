@@ -1,36 +1,24 @@
 import styled, { css } from 'styled-components';
-import { theme } from 'styles/theme';
+import {
+  handleColorType,
+  handleFontSize,
+  handleHoverColorType,
+} from 'utils/style';
+import { IconProps } from './Icon';
 
-const handleColorType = (shape: string | undefined) => {
-  switch (shape) {
-    case 'pen':
-      return theme.colors.green;
-    case 'eraser':
-      return theme.colors.red;
-    case 'checked-circle':
-      return theme.colors.blue;
-    case 'checked-star':
-      return theme.colors.yellow;
-    case 'checked-like':
-      return theme.colors.red;
-    default:
-      return theme.colors.gray.dark;
-  }
-};
-
-export const Svg = styled.svg`
-  ${({ style, id }) => {
+export const Svg = styled.svg<IconProps>`
+  ${({ color, shape, iconSize }) => {
     return css`
-      color: ${style?.color};
-      width: ${style?.width};
-      height: ${style?.height};
+      color: ${handleColorType(color)};
+      width: calc(${handleFontSize(iconSize)} * 2);
+      height: calc(${handleFontSize(iconSize)} * 2);
       transition: 200ms;
       transition-timing-function: ease-in-out;
       -webkit-transition: 200ms;
       -webkit-transition-timing-function: ease-in-out;
 
       &:hover {
-        color: ${handleColorType(id)};
+        color: ${handleHoverColorType(shape)};
       }
     `;
   }}

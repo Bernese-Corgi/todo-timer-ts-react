@@ -1,19 +1,23 @@
 import React from 'react';
 import { Svg } from './Icon.styled';
 import Sprite from './assets/sprites.svg';
-import { CSSProperties } from 'styled-components';
 
-type IconProps = {
-  shape: string;
-  style?: CSSProperties;
+export type IconProps = {
+  shape?: string;
+  color?: string;
+  iconSize?: string;
 };
 
-const Icon = ({ shape, style }: IconProps) => {
+const Icon = ({ shape, color, iconSize }: IconProps) => {
   return (
-    <Svg style={style} id={shape}>
+    <Svg color={color} shape={shape} iconSize={iconSize}>
       <use xlinkHref={`${Sprite}#icon-${shape}`} />
     </Svg>
   );
+};
+
+Icon.defaultProps = {
+  shape: '',
 };
 
 export default Icon;

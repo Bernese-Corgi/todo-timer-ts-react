@@ -76,5 +76,16 @@ declare module 'styled-components' {
         square: string;
       };
     };
+    flexes: {
+      mixin: (direction: string, align: string, justify: string) => string;
+      center: string;
+      row: (justify: string) => string;
+      column: (justify: string) => string;
+    };
+    positions: {
+      absolute: {
+        topLeft: string;
+      };
+    };
   }
 }

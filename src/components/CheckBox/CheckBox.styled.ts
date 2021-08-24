@@ -12,9 +12,7 @@ export const CheckBoxWrapper = styled.div`
 `;
 
 export const CheckBoxInput = styled.input`
-  position: 'absolute';
-  top: 0;
-  left: 0;
+  ${({ theme }) => theme.positions.absolute.topLeft}
   z-index: 100;
   width: 100%;
   height: 100%;
@@ -23,9 +21,7 @@ export const CheckBoxInput = styled.input`
 `;
 
 export const CheckBoxLabel = styled.label`
-  position: absolute;
+  ${({ theme }) => theme.positions.absolute.topLeft}
   width: 100%;
   height: 100%;
-  top: 0;
-  left: 0;
 `;
