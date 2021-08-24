@@ -130,6 +130,8 @@ export const GlobalStyle = createGlobalStyle`
     outline: none;
     background: transparent;
     border: none;
+    margin: 0;
+    padding: 0;
   }
   ol, ul, li {
     list-style: none;
