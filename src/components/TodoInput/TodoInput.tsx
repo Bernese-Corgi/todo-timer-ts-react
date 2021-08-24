@@ -10,17 +10,19 @@ export type TodoInputProps = {
 
 const TodoInput = ({ inputSize, onInput }: TodoInputProps) => {
   const size = 'base';
-
   const [value, setValue] = useState('');
-
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     setValue(e.target.value);
   };
 
-  // const handleClickButton = () =>
+  const handleSubmit = (e: FormEvent) => {
+    e.preventDefault();
+    onInput(value);
+    setValue('');
+  };
 
   return (
-    <form>
+    <form onSubmit={handleSubmit}>
       <TodoInputWrapper inputSize={inputSize}>
         <Input
           type="text"
