@@ -1,18 +1,22 @@
-import Icon from 'components/Icon/Icon';
 import React from 'react';
-import { CSSProperties } from 'styled-components';
+import Icon from 'components/Icon/Icon';
+import { IconButtonStyle } from './IconButton.style';
 
-type IconButtonProps = {
+export type IconButtonProps = IconButtonStyleProps & {
   shape: string;
-  style?: CSSProperties;
+  color?: string;
   onClick?: () => void;
 };
 
-const IconButton = ({ shape, style, onClick }: IconButtonProps) => {
+export type IconButtonStyleProps = {
+  iconSize?: string;
+};
+
+const IconButton = ({ shape, color, onClick, iconSize }: IconButtonProps) => {
   return (
-    <button onClick={onClick}>
-      <Icon shape={shape} style={style} />
-    </button>
+    <IconButtonStyle onClick={onClick} iconSize={iconSize}>
+      <Icon shape={shape} color={color} iconSize={iconSize} />
+    </IconButtonStyle>
   );
 };
 
