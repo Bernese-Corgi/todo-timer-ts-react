@@ -6,7 +6,7 @@ import {
   CheckBoxWrapper,
 } from './CheckBox.styled';
 
-type CheckBoxProps = {
+type CheckBoxProps = CheckBoxWrapperProps & {
   id: string;
   name: string;
   value: string;
@@ -14,6 +14,9 @@ type CheckBoxProps = {
   onChange?: () => void;
   children?: React.ReactNode;
   shape: string;
+};
+
+export type CheckBoxWrapperProps = {
   iconSize: string;
 };
 
@@ -25,9 +28,10 @@ const CheckBox = ({
   children,
   onChange,
   shape,
+  iconSize,
 }: CheckBoxProps) => {
   return (
-    <CheckBoxWrapper>
+    <CheckBoxWrapper iconSize={iconSize}>
       <CheckBoxInput
         type="checkbox"
         id={id}
