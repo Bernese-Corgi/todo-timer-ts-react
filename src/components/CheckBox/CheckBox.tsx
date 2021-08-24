@@ -6,7 +6,7 @@ import {
   CheckBoxWrapper,
 } from './CheckBox.styled';
 
-type ChekBoxProps = {
+type CheckBoxProps = {
   id: string;
   name: string;
   value: string;
@@ -14,6 +14,7 @@ type ChekBoxProps = {
   onChange?: () => void;
   children?: React.ReactNode;
   shape: string;
+  iconSize: string;
 };
 
 const CheckBox = ({
@@ -24,7 +25,7 @@ const CheckBox = ({
   children,
   onChange,
   shape,
-}: ChekBoxProps) => {
+}: CheckBoxProps) => {
   return (
     <CheckBoxWrapper>
       <CheckBoxInput
@@ -51,6 +52,7 @@ CheckBox.defaultProps = {
   value: '',
   checked: false,
   shape: 'circle',
+  iconSize: 'base',
 };
 
 export default CheckBox;
