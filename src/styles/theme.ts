@@ -82,6 +82,41 @@ const borders = {
   },
 };
 
+const flexes = {
+  mixin: (direction = 'row', align = 'center', justify = 'center') => `
+    display:flex;
+    flex-direction:${direction};
+    align-items:${align};
+    justify-content:${justify}
+  `,
+  center: `
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  `,
+  row: (justify = 'center') => `
+    display: flex;
+    justify-content: ${justify};
+    align-items: center;
+  `,
+  column: (justify = 'center') => `
+    display: flex;
+    flex-flow: column;
+    justify-content: ${justify};
+    align-items: center;
+  `,
+};
+
+const positions = {
+  absolute: {
+    topLeft: `
+      position: absolute;
+      top: 0;
+      left: 0;
+    `,
+  },
+};
+
 export const theme: DefaultTheme = {
   colors,
   fonts,
@@ -91,4 +126,6 @@ export const theme: DefaultTheme = {
   paddings,
   boxShadow,
   borders,
+  flexes,
+  positions,
 };
