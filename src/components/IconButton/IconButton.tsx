@@ -3,21 +3,32 @@ import Icon from 'components/Icon/Icon';
 import { IconButtonStyle } from './IconButton.style';
 
 export type IconButtonProps = IconButtonStyleProps & {
+  type: 'button' | 'submit' | 'reset';
   shape: string;
   color?: string;
-  onClick?: () => void;
+  onClick: () => void;
 };
 
 export type IconButtonStyleProps = {
   iconSize?: string;
 };
 
-const IconButton = ({ shape, color, onClick, iconSize }: IconButtonProps) => {
+const IconButton = ({
+  type,
+  shape,
+  color,
+  onClick,
+  iconSize,
+}: IconButtonProps) => {
   return (
-    <IconButtonStyle onClick={onClick} iconSize={iconSize}>
+    <IconButtonStyle type={type} onClick={onClick} iconSize={iconSize}>
       <Icon shape={shape} color={color} iconSize={iconSize} />
     </IconButtonStyle>
   );
+};
+
+IconButton.defaultProps = {
+  type: 'button',
 };
 
 export default IconButton;
