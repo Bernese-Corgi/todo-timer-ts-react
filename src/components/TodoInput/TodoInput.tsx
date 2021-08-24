@@ -1,40 +1,41 @@
 import IconButton from 'components/IconButton/IconButton';
 import Input from 'components/Input/Input';
-import React, { ChangeEvent, useState } from 'react';
+import React, { ChangeEvent, FormEvent, useState } from 'react';
 import { TodoInputWrapper } from './TodoInput.styled';
 
-export type TodoInputWrapperProps = {
-  size?: string;
+export type TodoInputProps = {
+  inputSize?: string;
+  onInput: (value: string) => void;
 };
 
-const TodoInput = () => {
+const TodoInput = ({ inputSize, onInput }: TodoInputProps) => {
   const size = 'base';
 
   const [value, setValue] = useState('');
+
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     setValue(e.target.value);
   };
 
-  const handleClick = () => {
-    console.log('click');
-    setValue('');
-  };
+  // const handleClickButton = () =>
 
   return (
-    <TodoInputWrapper size={size}>
-      <Input
-        type="text"
-        value={value}
-        onChange={handleChange}
-        inputSize={size}
-      />
-      <IconButton
-        shape="plus"
-        color="primary"
-        iconSize={size}
-        onClick={handleClick}
-      />
-    </TodoInputWrapper>
+    <form>
+      <TodoInputWrapper inputSize={inputSize}>
+        <Input
+          type="text"
+          value={value}
+          onChange={handleChange}
+          inputSize={size}
+        />
+        <IconButton
+          type="submit"
+          shape="plus"
+          color="secondary"
+          iconSize={size}
+        />
+      </TodoInputWrapper>
+    </form>
   );
 };
 

@@ -1,7 +1,5 @@
-import { theme } from 'styles/theme';
 import styled from 'styled-components';
 import { handlePaddingSize } from 'utils/style';
-import { TodoInputWrapperProps } from './TodoInput';
 
 // todo: Move to utils directory
 const handleWidthSize = (size: string | undefined) => {
@@ -19,11 +17,14 @@ const handleWidthSize = (size: string | undefined) => {
   }
 };
 
+type TodoInputWrapperProps = {
+  inputSize?: string;
+};
+
 export const TodoInputWrapper = styled.div<TodoInputWrapperProps>`
   ${({ theme }) => theme.flexes.row('start')};
-  width: ${({ size }) => handleWidthSize(size)};
-  background-color: ${theme.colors.primary.light};
-  padding: ${({ size }) => handlePaddingSize(size)};
+  width: ${({ inputSize }) => handleWidthSize(inputSize)};
+  padding: ${({ inputSize }) => handlePaddingSize(inputSize)};
 
   & Input {
     width: 90%;
