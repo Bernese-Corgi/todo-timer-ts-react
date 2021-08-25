@@ -14,6 +14,8 @@ export const handleHoverColorType = (shape: string | undefined) => {
       return colors.yellow;
     case 'checked-like':
       return colors.red;
+    case 'confirm':
+      return colors.blue;
     default:
       return;
   }
