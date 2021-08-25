@@ -10,6 +10,7 @@ type CheckBoxProps = CheckBoxWrapperProps & {
   id: string;
   name: string;
   value: string;
+  ariaLabel: string;
   checked: boolean;
   onChange?: () => void;
   children?: React.ReactNode;
@@ -24,6 +25,7 @@ const CheckBox = ({
   id,
   name,
   value,
+  ariaLabel,
   checked,
   children,
   onChange,
@@ -37,6 +39,8 @@ const CheckBox = ({
         id={id}
         name={name}
         value={value}
+        title={ariaLabel}
+        aria-label={ariaLabel}
         checked={checked}
         onChange={onChange}
       />
@@ -54,6 +58,7 @@ const CheckBox = ({
 
 CheckBox.defaultProps = {
   value: '',
+  ariaLabel: '',
   checked: false,
   shape: 'circle',
   iconSize: 'base',

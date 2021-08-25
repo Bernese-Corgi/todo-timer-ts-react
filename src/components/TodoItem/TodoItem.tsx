@@ -78,6 +78,7 @@ const TodoItem = ({
         <CheckBox
           id="toggleTodo"
           name="toggleTodo"
+          ariaLabel={todo.done ? '완료되지 않음 표시하기' : '완료됨 표시하기'}
           checked={todo.done}
           onChange={handleToggleCheckBox}
         />
@@ -96,6 +97,7 @@ const TodoItem = ({
         />
         {isFocus ? (
           <IconButton
+            ariaLabel="수정완료"
             shape="confirm"
             color={theme.colors.gray.light}
             onClick={handleClickConfirmButton}
@@ -103,6 +105,7 @@ const TodoItem = ({
           />
         ) : (
           <IconButton
+            ariaLabel="수정하기"
             shape="edit"
             color={theme.colors.gray.light}
             onClick={handleClickEditButton}
@@ -111,6 +114,7 @@ const TodoItem = ({
         )}
         <IconButton
           shape="delete"
+          ariaLabel="삭제하기"
           onClick={handleDeleteButton}
           iconSize={iconSize}
         />
