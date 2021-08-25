@@ -13,11 +13,12 @@ type CheckBoxProps = CheckBoxWrapperProps & {
   ariaLabel: string;
   checked: boolean;
   onChange?: () => void;
+  color?: string;
   children?: React.ReactNode;
-  shape: string;
 };
 
 export type CheckBoxWrapperProps = {
+  shape: string;
   iconSize: string;
 };
 
@@ -30,10 +31,11 @@ const CheckBox = ({
   children,
   onChange,
   shape,
+  color,
   iconSize,
 }: CheckBoxProps) => {
   return (
-    <CheckBoxWrapper iconSize={iconSize}>
+    <CheckBoxWrapper iconSize={iconSize} shape={shape}>
       <CheckBoxInput
         type="checkbox"
         id={id}
@@ -46,9 +48,9 @@ const CheckBox = ({
       />
       <CheckBoxLabel htmlFor={id}>
         {checked ? (
-          <Icon shape={`checked-${shape}`} />
+          <Icon shape={`checked-${shape}`} color={color} />
         ) : (
-          <Icon shape={`${shape}`} />
+          <Icon shape={`${shape}`} color={color} />
         )}
         {children}
       </CheckBoxLabel>
