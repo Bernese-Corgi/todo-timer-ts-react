@@ -35,7 +35,7 @@ const TodoApp = () => {
   };
 
   return (
-    <div>
+    <section>
       <TodoAdd onInput={handleChangeInput} inputSize={size} />
       {/* todo: TodoItem 렌더링 되는 식은 TodoList로 옮길것. */}
       {todos.map(todo => (
@@ -47,7 +47,7 @@ const TodoApp = () => {
           iconSize={size}
         />
       ))}
-    </div>
+    </section>
   );
 };
 
