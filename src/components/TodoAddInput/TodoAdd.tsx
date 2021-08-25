@@ -17,6 +17,7 @@ const TodoAdd = ({ inputSize, onInput }: TodoAddProps) => {
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
+    if (!value) return;
     onInput(value);
     setValue('');
   };
