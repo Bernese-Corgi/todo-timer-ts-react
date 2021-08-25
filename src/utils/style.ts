@@ -8,6 +8,8 @@ export const handleHoverColorType = (shape: string | undefined) => {
       return colors.green;
     case 'delete':
       return colors.red;
+    case 'circle':
+      return colors.blue;
     case 'checked-circle':
       return colors.blue;
     case 'checked-star':
