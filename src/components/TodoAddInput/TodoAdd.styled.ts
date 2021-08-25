@@ -1,5 +1,8 @@
 import styled from 'styled-components';
+import { theme } from 'styles/theme';
 import { handlePaddingSize } from 'utils/style';
+
+const { colors } = theme;
 
 // todo: Move to utils directory
 const handleWidthSize = (size: string | undefined) => {
@@ -28,5 +31,13 @@ export const TodoAddWrapper = styled.div<TodoAddWrapperProps>`
 
   & Input {
     width: 90%;
+    color: ${colors.gray.base};
+    border-bottom: 0.1rem solid ${colors.gray.light};
+    padding: ${({ inputSize }) => handlePaddingSize(inputSize)};
+
+    &:focus {
+      color: ${colors.gray.dark};
+      border-bottom: 0.1rem solid ${colors.gray.dark};
+    }
   }
 `;
