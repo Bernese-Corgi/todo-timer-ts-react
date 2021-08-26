@@ -4,19 +4,21 @@ import { EditInputStyle } from './EditInput.styled';
 export type EditInputProps = {
   type: string;
   value: string;
-  onBlur?: (e: FocusEvent<HTMLInputElement>) => void;
+  disabled: boolean;
+  done: boolean;
   onChange: (e: ChangeEvent<HTMLInputElement>) => void;
   inputSize: string;
 };
 
 const EditInput = forwardRef<HTMLInputElement, EditInputProps>(
-  ({ type, value, onBlur, onChange, inputSize }, ref) => {
+  ({ type, value, disabled, done, onChange, inputSize }, ref) => {
     return (
       <EditInputStyle
         type={type}
         value={value}
+        disabled={disabled}
+        done={done}
         ref={ref}
-        onBlur={onBlur}
         onChange={onChange}
         inputSize={inputSize}
       />
@@ -26,6 +28,8 @@ const EditInput = forwardRef<HTMLInputElement, EditInputProps>(
 
 EditInput.defaultProps = {
   type: 'text',
+  disabled: false,
+  done: false,
 };
 
 EditInput.displayName = 'EditInput';
