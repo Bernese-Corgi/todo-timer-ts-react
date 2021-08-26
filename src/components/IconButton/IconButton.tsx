@@ -1,4 +1,4 @@
-import React, { ChangeEvent } from 'react';
+import React from 'react';
 import Icon from 'components/Icon/Icon';
 import { IconButtonStyle } from './IconButton.style';
 
@@ -34,6 +34,7 @@ const IconButton = ({
       onClick={onClick}
       iconSize={iconSize}>
       <Icon
+        id={id}
         ariaLabel={ariaLabel}
         shape={shape}
         color={color}

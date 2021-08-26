@@ -48,9 +48,9 @@ const CheckBox = ({
       />
       <CheckBoxLabel htmlFor={id}>
         {checked ? (
-          <Icon shape={`checked-${shape}`} color={color} />
+          <Icon id={id} shape={`checked-${shape}`} color={color} />
         ) : (
-          <Icon shape={`${shape}`} color={color} />
+          <Icon id={id} shape={`${shape}`} color={color} />
         )}
         {children}
       </CheckBoxLabel>
