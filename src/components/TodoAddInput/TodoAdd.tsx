@@ -32,6 +32,7 @@ const TodoAdd = ({ inputSize, onInput }: TodoAddProps) => {
           inputSize={size}
         />
         <IconButton
+          id="addButton"
           ariaLabel="할 일 추가하기"
           type="submit"
           shape="plus"
