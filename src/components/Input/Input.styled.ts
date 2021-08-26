@@ -13,3 +13,5 @@ export const InputStyle = styled.input<InputStyleProps>`
   padding: ${({ inputSize }) => handlePaddingSize(inputSize)};
   border-bottom: 0.1rem solid rgba(0, 0, 0, 0);
 `;
+
+InputStyle.displayName = 'InputStyle';

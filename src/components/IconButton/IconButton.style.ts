@@ -10,3 +10,5 @@ export const IconButtonStyle = styled.button<IconButtonStyleProps>`
     color: ${({ shape }) => handleHoverColorType(shape)};
   }
 `;
+
+IconButtonStyle.displayName = 'IconButtonStyle';

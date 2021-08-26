@@ -48,3 +48,5 @@ export const ButtonStyle = styled.button<ButtonProps>`
           `}
   }
 `;
+
+ButtonStyle.displayName = 'ButtonStyle';
