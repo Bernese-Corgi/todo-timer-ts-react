@@ -6,10 +6,8 @@ import { EditInputProps } from './EditInput';
 const { colors } = theme;
 
 export const EditInputStyle = styled(InputStyle)<EditInputProps>`
-  &:focus {
-    border-bottom: 0.1rem solid ${colors.gray.base};
-  }
-
+  border-bottom: 0.1rem solid
+    ${({ readOnly }) => (readOnly ? 'rgba(0, 0, 0, 0)' : colors.gray.base)};
   color: ${({ done }) => (done ? colors.gray.light : 'currentColor')};
   text-decoration: ${({ done }) => (done ? 'line-through' : 'none')};
 `;
