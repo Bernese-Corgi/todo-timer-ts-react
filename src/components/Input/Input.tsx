@@ -4,7 +4,9 @@ import { InputStyle } from './Input.styled';
 export type InputProps = InputStyleProps & {
   type: string;
   value: string;
-  onBlur?: (e: FocusEvent<HTMLInputElement>) => void;
+  disabled?: boolean;
+  onFocus?: (e: FocusEvent<HTMLInputElement>) => void;
+  // onBlur?: (e: FocusEvent<HTMLInputElement>) => void;
   onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
 };
 
@@ -13,13 +15,15 @@ export type InputStyleProps = {
 };
 
 const Input = forwardRef<HTMLInputElement, InputProps>(
-  ({ type, value, onBlur, onChange, inputSize }, ref) => {
+  ({ type, value, disabled, onFocus, onChange, inputSize }, ref) => {
     return (
       <InputStyle
         type={type}
         value={value}
         ref={ref}
-        onBlur={onBlur}
+        disabled={disabled}
+        onFocus={onFocus}
+        // onBlur={onBlur}
         onChange={onChange}
         inputSize={inputSize}
       />
