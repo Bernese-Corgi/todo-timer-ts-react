@@ -1,22 +1,24 @@
-import React, { ChangeEvent, FocusEvent, forwardRef } from 'react';
+import React, { ChangeEvent, forwardRef } from 'react';
 import { EditInputStyle } from './EditInput.styled';
 
 export type EditInputProps = {
   type: string;
+  id?: string;
   value: string;
-  disabled: boolean;
+  readOnly?: boolean;
   done: boolean;
   onChange: (e: ChangeEvent<HTMLInputElement>) => void;
   inputSize: string;
 };
 
 const EditInput = forwardRef<HTMLInputElement, EditInputProps>(
-  ({ type, value, disabled, done, onChange, inputSize }, ref) => {
+  ({ type, id, value, readOnly, done, onChange, inputSize }, ref) => {
     return (
       <EditInputStyle
         type={type}
+        id={id}
         value={value}
-        disabled={disabled}
+        readOnly={readOnly}
         done={done}
         ref={ref}
         onChange={onChange}
@@ -28,7 +30,7 @@ const EditInput = forwardRef<HTMLInputElement, EditInputProps>(
 
 EditInput.defaultProps = {
   type: 'text',
-  disabled: false,
+  readOnly: false,
   done: false,
 };
 

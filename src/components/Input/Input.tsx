@@ -1,12 +1,11 @@
-import React, { ChangeEvent, FocusEvent, forwardRef } from 'react';
+import React, { ChangeEvent, forwardRef } from 'react';
 import { InputStyle } from './Input.styled';
 
 export type InputProps = InputStyleProps & {
   type: string;
+  id?: string;
   value: string;
-  disabled?: boolean;
-  onFocus?: (e: FocusEvent<HTMLInputElement>) => void;
-  // onBlur?: (e: FocusEvent<HTMLInputElement>) => void;
+  readOnly?: boolean;
   onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
 };
 
@@ -15,15 +14,14 @@ export type InputStyleProps = {
 };
 
 const Input = forwardRef<HTMLInputElement, InputProps>(
-  ({ type, value, disabled, onFocus, onChange, inputSize }, ref) => {
+  ({ type, id, value, readOnly, onChange, inputSize }, ref) => {
     return (
       <InputStyle
         type={type}
+        id={id}
         value={value}
         ref={ref}
-        disabled={disabled}
-        onFocus={onFocus}
-        // onBlur={onBlur}
+        readOnly={readOnly}
         onChange={onChange}
         inputSize={inputSize}
       />
