@@ -3,6 +3,7 @@ import Icon from 'components/Icon/Icon';
 import { IconButtonStyle } from './IconButton.style';
 
 export type IconButtonProps = IconButtonStyleProps & {
+  id: string;
   ariaLabel: string;
   type: 'button' | 'submit' | 'reset';
   onClick?: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
@@ -15,6 +16,7 @@ export type IconButtonStyleProps = {
 };
 
 const IconButton = ({
+  id,
   ariaLabel,
   type,
   shape,
@@ -24,6 +26,7 @@ const IconButton = ({
 }: IconButtonProps) => {
   return (
     <IconButtonStyle
+      id={id}
       type={type}
       shape={shape}
       title={ariaLabel}
@@ -41,6 +44,7 @@ const IconButton = ({
 };
 
 IconButton.defaultProps = {
+  id: '',
   ariaLabel: '',
   type: 'button',
 };
