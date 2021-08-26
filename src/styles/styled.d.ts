@@ -85,6 +85,7 @@ declare module 'styled-components' {
     positions: {
       absolute: {
         topLeft: string;
+        center: string;
       };
     };
   }

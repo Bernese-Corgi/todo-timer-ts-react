@@ -3,21 +3,55 @@ import Icon from 'components/Icon/Icon';
 import { IconButtonStyle } from './IconButton.style';
 
 export type IconButtonProps = IconButtonStyleProps & {
-  shape: string;
-  color?: string;
-  onClick?: () => void;
+  id: string;
+  ariaLabel: string;
+  type: 'button' | 'submit' | 'reset';
+  onClick?: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
 };
 
 export type IconButtonStyleProps = {
+  shape: string;
+  color?: string;
   iconSize?: string;
 };
 
-const IconButton = ({ shape, color, onClick, iconSize }: IconButtonProps) => {
+const IconButton = ({
+  id,
+  ariaLabel,
+  type,
+  shape,
+  color,
+  onClick,
+  iconSize,
+}: IconButtonProps) => {
   return (
-    <IconButtonStyle onClick={onClick} iconSize={iconSize}>
-      <Icon shape={shape} color={color} iconSize={iconSize} />
+    <IconButtonStyle
+      id={id}
+      type={type}
+      shape={shape}
+      title={ariaLabel}
+      color={color}
+      onClick={onClick}
+      iconSize={iconSize}>
+      <Icon
+        id={id}
+        ariaLabel={ariaLabel}
+        shape={shape}
+        color={color}
+        iconSize={iconSize}
+      />
     </IconButtonStyle>
   );
+};
+
+IconButton.defaultProps = {
+  id: '',
+  ariaLabel: '',
+  type: 'button',
+};
+
+IconButtonStyle.defaultProps = {
+  shape: '',
 };
 
 export default IconButton;

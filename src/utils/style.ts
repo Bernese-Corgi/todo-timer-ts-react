@@ -4,16 +4,20 @@ const { colors, fonts, paddings, margins } = theme;
 
 export const handleHoverColorType = (shape: string | undefined) => {
   switch (shape) {
-    case 'pen':
+    case 'edit':
       return colors.green;
-    case 'eraser':
+    case 'delete':
       return colors.red;
+    case 'circle':
+      return colors.blue;
     case 'checked-circle':
       return colors.blue;
     case 'checked-star':
       return colors.yellow;
     case 'checked-like':
       return colors.red;
+    case 'confirm':
+      return colors.blue;
     default:
       return;
   }

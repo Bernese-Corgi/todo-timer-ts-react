@@ -6,13 +6,18 @@ import {
   CheckBoxWrapper,
 } from './CheckBox.styled';
 
-type CheckBoxProps = {
+type CheckBoxProps = CheckBoxWrapperProps & {
   id: string;
   name: string;
   value: string;
+  ariaLabel: string;
   checked: boolean;
   onChange?: () => void;
+  color?: string;
   children?: React.ReactNode;
+};
+
+export type CheckBoxWrapperProps = {
   shape: string;
   iconSize: string;
 };
@@ -21,26 +26,31 @@ const CheckBox = ({
   id,
   name,
   value,
+  ariaLabel,
   checked,
   children,
   onChange,
   shape,
+  color,
+  iconSize,
 }: CheckBoxProps) => {
   return (
-    <CheckBoxWrapper>
+    <CheckBoxWrapper iconSize={iconSize} shape={shape}>
       <CheckBoxInput
         type="checkbox"
         id={id}
         name={name}
         value={value}
+        title={ariaLabel}
+        aria-label={ariaLabel}
         checked={checked}
         onChange={onChange}
       />
       <CheckBoxLabel htmlFor={id}>
         {checked ? (
-          <Icon shape={`checked-${shape}`} />
+          <Icon id={id} shape={`checked-${shape}`} color={color} />
         ) : (
-          <Icon shape={`${shape}`} />
+          <Icon id={id} shape={`${shape}`} color={color} />
         )}
         {children}
       </CheckBoxLabel>
@@ -50,6 +60,7 @@ const CheckBox = ({
 
 CheckBox.defaultProps = {
   value: '',
+  ariaLabel: '',
   checked: false,
   shape: 'circle',
   iconSize: 'base',
