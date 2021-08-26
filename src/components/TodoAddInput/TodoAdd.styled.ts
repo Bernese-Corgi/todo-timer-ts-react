@@ -41,3 +41,5 @@ export const TodoAddWrapper = styled.div<TodoAddWrapperProps>`
     }
   }
 `;
+
+TodoAddWrapper.displayName = 'TodoAddWrapper';

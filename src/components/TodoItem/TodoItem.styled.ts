@@ -7,7 +7,7 @@ type TodoItemLiProps = {
   key: number;
 };
 
-export const TodoItemLi = styled.li<TodoItemLiProps>`
+export const TodoItemLiStyle = styled.li<TodoItemLiProps>`
   ${theme.flexes.row('start')}
   ${IconButtonStyle} {
     opacity: 0;
@@ -30,3 +30,5 @@ export const TodoItemLi = styled.li<TodoItemLiProps>`
       `;
   }}
 `;
+
+TodoItemLiStyle.displayName = 'TodoItemLiStyle';

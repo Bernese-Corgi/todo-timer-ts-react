@@ -30,3 +30,5 @@ export const Svg = styled.svg<IconProps>`
     `;
   }}
 `;
+
+Svg.displayName = 'Svg';

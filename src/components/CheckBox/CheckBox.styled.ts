@@ -29,3 +29,7 @@ export const CheckBoxInput = styled.input`
 export const CheckBoxLabel = styled.label`
   ${({ theme }) => theme.positions.absolute.center}
 `;
+
+CheckBoxWrapper.displayName = 'CheckBoxWrapper';
+CheckBoxInput.displayName = 'CheckBoxInput';
+CheckBoxLabel.displayName = 'CheckBoxLabel';

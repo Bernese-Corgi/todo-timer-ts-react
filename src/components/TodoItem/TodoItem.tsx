@@ -3,7 +3,7 @@ import EditInput from 'components/EditInput/EditInput';
 import IconButton from 'components/IconButton/IconButton';
 import { Todo } from 'modules/todos';
 import React, { ChangeEvent, useEffect, useRef, useState } from 'react';
-import { TodoItemLi } from './TodoItem.styled';
+import { TodoItemLiStyle } from './TodoItem.styled';
 
 type TodoItemProps = {
   todo: Todo;
@@ -67,7 +67,7 @@ const TodoItem = ({
   });
 
   return (
-    <TodoItemLi key={todo.id} inputFocus={isFocus}>
+    <TodoItemLiStyle key={todo.id} inputFocus={isFocus}>
       <CheckBox
         id="toggleTodo"
         name="toggleTodo"
@@ -114,7 +114,7 @@ const TodoItem = ({
         onClick={handleDeleteButton}
         iconSize={iconSize}
       />
-    </TodoItemLi>
+    </TodoItemLiStyle>
   );
 };
 
