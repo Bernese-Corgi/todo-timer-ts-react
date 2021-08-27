@@ -1,6 +1,7 @@
 import CheckBox from 'components/CheckBox/CheckBox';
 import EditInput from 'components/EditInput/EditInput';
 import IconButton from 'components/IconButton/IconButton';
+import useCompare from 'hooks/useCompare';
 import { Todo } from 'modules/todos';
 import React, {
   ChangeEvent,
@@ -32,10 +33,12 @@ const TodoItem = ({
 
   const editInput = useRef<HTMLInputElement>(null);
 
+  const hasValueChanged = useCompare(value);
+
   const dispatchEditTodo = useCallback(() => {
-    onEdit(todo.id, value);
+    if (hasValueChanged) onEdit(todo.id, value);
     setIsFocus(false);
-  }, [onEdit, todo.id, value]);
+  }, [hasValueChanged, onEdit, todo.id, value]);
 
   // 체크박스 클릭 시 이벤트
   const handleToggleCheckBox = () => onToggle(todo.id);
