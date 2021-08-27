@@ -122,12 +122,12 @@ export const GlobalStyle = createGlobalStyle`
   input {
     background: transparent;
     border: none;
-    outline: none;
+    /* outline: none; */
   }
   button {
     user-select: none;
     cursor: pointer;
-    outline: none;
+    /* outline: none; */
     background: transparent;
     border: none;
     margin: 0;
