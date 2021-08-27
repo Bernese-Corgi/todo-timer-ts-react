@@ -1,32 +1,36 @@
 import Icon from 'components/Icon/Icon';
-import React from 'react';
+import React, { ChangeEvent } from 'react';
 import {
   CheckBoxInput,
   CheckBoxLabel,
   CheckBoxWrapper,
 } from './CheckBox.styled';
 
-type CheckBoxProps = CheckBoxWrapperProps & {
-  id: string;
-  name: string;
-  value: string;
-  ariaLabel: string;
-  checked: boolean;
-  onChange?: () => void;
-  color?: string;
-  children?: React.ReactNode;
-};
+export type CheckBoxProps = CheckBoxWrapperProps &
+  CheckBoxInputProps & {
+    color?: string;
+    children?: React.ReactNode;
+  };
 
 export type CheckBoxWrapperProps = {
   shape: string;
   iconSize: string;
 };
 
+export type CheckBoxInputProps = {
+  id: string;
+  name: string;
+  value: string;
+  title: string;
+  checked: boolean;
+  onChange: (e: ChangeEvent<HTMLInputElement>) => void;
+};
+
 const CheckBox = ({
   id,
   name,
   value,
-  ariaLabel,
+  title,
   checked,
   children,
   onChange,
@@ -41,12 +45,12 @@ const CheckBox = ({
         id={id}
         name={name}
         value={value}
-        title={ariaLabel}
-        aria-label={ariaLabel}
+        title={title}
+        aria-label={title}
         checked={checked}
         onChange={onChange}
       />
-      <CheckBoxLabel htmlFor={id}>
+      <CheckBoxLabel htmlFor={id} tabIndex={0}>
         {checked ? (
           <Icon id={id} shape={`checked-${shape}`} color={color} />
         ) : (
@@ -60,7 +64,7 @@ const CheckBox = ({
 
 CheckBox.defaultProps = {
   value: '',
-  ariaLabel: '',
+  title: '',
   checked: false,
   shape: 'circle',
   iconSize: 'base',

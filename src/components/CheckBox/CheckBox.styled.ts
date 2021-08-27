@@ -5,7 +5,7 @@ import {
   handleHoverColorType,
   handleMarginSize,
 } from 'utils/style';
-import { CheckBoxWrapperProps } from './CheckBox';
+import { CheckBoxInputProps, CheckBoxWrapperProps } from './CheckBox';
 
 export const CheckBoxWrapper = styled.div<CheckBoxWrapperProps>`
   position: relative;
@@ -19,7 +19,7 @@ export const CheckBoxWrapper = styled.div<CheckBoxWrapperProps>`
   }
 `;
 
-export const CheckBoxInput = styled.input`
+export const CheckBoxInput = styled.input<CheckBoxInputProps>`
   ${({ theme }) => theme.positions.absolute.center}
   cursor: pointer;
   z-index: 100;

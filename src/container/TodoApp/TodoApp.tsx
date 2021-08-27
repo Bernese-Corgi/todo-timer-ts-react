@@ -2,8 +2,8 @@ import React from 'react';
 import { RootState } from 'modules';
 import { addTodo, deleteTodo, editTodo, toggleTodo } from 'modules/todos';
 import { useDispatch, useSelector } from 'react-redux';
-import TodoItem from 'components/TodoItem/TodoItem';
 import TodoAdd from 'components/TodoAddInput/TodoAdd';
+import TodoList from 'components/TodoList/TodoList';
 
 const TodoApp = () => {
   // size 설정
@@ -37,16 +37,13 @@ const TodoApp = () => {
   return (
     <section>
       <TodoAdd onInput={handleChangeInput} inputSize={size} />
-      {/* todo: TodoItem 렌더링 되는 식은 TodoList로 옮길것. */}
-      {todos.map(todo => (
-        <TodoItem
-          todo={todo}
-          onToggle={handleToggleItem}
-          onEdit={handleEditItem}
-          onDelete={handleDeleteItem}
-          iconSize={size}
-        />
-      ))}
+      <TodoList
+        todos={todos}
+        onToggle={handleToggleItem}
+        onEdit={handleEditItem}
+        onDelete={handleDeleteItem}
+        iconSize={size}
+      />
     </section>
   );
 };
