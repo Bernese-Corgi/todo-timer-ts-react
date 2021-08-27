@@ -7,6 +7,7 @@ import {
 } from './CheckBox.styled';
 
 export type CheckBoxProps = CheckBoxWrapperProps &
+  CheckBoxLabelProps &
   CheckBoxInputProps & {
     color?: string;
     children?: React.ReactNode;
@@ -17,8 +18,10 @@ export type CheckBoxWrapperProps = {
   iconSize: string;
 };
 
+export type CheckBoxLabelProps = {};
+
 export type CheckBoxInputProps = {
-  id: string;
+  id?: string;
   name: string;
   value: string;
   title: string;
@@ -34,28 +37,28 @@ const CheckBox = ({
   checked,
   children,
   onChange,
+
   shape,
   color,
   iconSize,
 }: CheckBoxProps) => {
   return (
     <CheckBoxWrapper iconSize={iconSize} shape={shape}>
-      <CheckBoxInput
-        type="checkbox"
-        id={id}
-        name={name}
-        value={value}
-        title={title}
-        aria-label={title}
-        checked={checked}
-        onChange={onChange}
-      />
-      <CheckBoxLabel htmlFor={id} tabIndex={0}>
+      <CheckBoxLabel>
         {checked ? (
           <Icon id={id} shape={`checked-${shape}`} color={color} />
         ) : (
           <Icon id={id} shape={`${shape}`} color={color} />
         )}
+        <CheckBoxInput
+          type="checkbox"
+          name={name}
+          value={value}
+          title={title}
+          aria-label={title}
+          checked={checked}
+          onChange={onChange}
+        />
         {children}
       </CheckBoxLabel>
     </CheckBoxWrapper>
