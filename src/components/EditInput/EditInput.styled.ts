@@ -1,15 +1,50 @@
 import { InputStyle } from 'components/Input/Input.styled';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { theme } from 'styles/theme';
 import { EditInputProps } from './EditInput';
 
 const { colors } = theme;
 
 export const EditInputStyle = styled(InputStyle)<EditInputProps>`
-  border-bottom: 0.1rem solid
-    ${({ readOnly }) => (readOnly ? 'rgba(0, 0, 0, 0)' : colors.gray.base)};
-  color: ${({ done }) => (done ? colors.gray.light : 'currentColor')};
-  text-decoration: ${({ done }) => (done ? 'line-through' : 'none')};
+  ${({ readOnly, done }) => {
+    if (readOnly && !done)
+      return css`
+        outline: transparent;
+
+        ::-moz-selection {
+          background: ${colors.primary.base}60;
+        }
+        ::selection {
+          background: ${colors.primary.base}60;
+        }
+      `;
+
+    if (!readOnly && done)
+      return css`
+        border-bottom: 0.1rem solid ${colors.gray.base};
+      `;
+
+    if (readOnly && done)
+      return css`
+        color: ${colors.gray.base};
+        text-decoration: line-through;
+
+        &:focus {
+          outline: transparent;
+
+          ::-moz-selection {
+            color: ${colors.gray.dark};
+            text-decoration: line-through ${colors.gray.dark}60;
+            background: ${colors.gray.light};
+          }
+          ::selection {
+            color: ${colors.gray.dark};
+            text-decoration: line-through ${colors.gray.dark}60;
+            background: ${colors.gray.light};
+          }
+        }
+      `;
+  }}
 `;
 
 EditInputStyle.displayName = 'EditInputStyle';

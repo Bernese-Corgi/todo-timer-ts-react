@@ -8,11 +8,15 @@ export type EditInputProps = {
   readOnly?: boolean;
   done: boolean;
   onChange: (e: ChangeEvent<HTMLInputElement>) => void;
+  onKeyPress?: (e: React.KeyboardEvent<HTMLInputElement>) => void;
   inputSize: string;
 };
 
 const EditInput = forwardRef<HTMLInputElement, EditInputProps>(
-  ({ type, id, value, readOnly, done, onChange, inputSize }, ref) => {
+  (
+    { type, id, value, readOnly, done, onChange, onKeyPress, inputSize },
+    ref
+  ) => {
     return (
       <EditInputStyle
         type={type}
@@ -22,6 +26,7 @@ const EditInput = forwardRef<HTMLInputElement, EditInputProps>(
         done={done}
         ref={ref}
         onChange={onChange}
+        onKeyPress={onKeyPress}
         inputSize={inputSize}
       />
     );

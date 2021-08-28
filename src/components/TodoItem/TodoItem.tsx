@@ -1,8 +1,18 @@
 import CheckBox from 'components/CheckBox/CheckBox';
 import EditInput from 'components/EditInput/EditInput';
 import IconButton from 'components/IconButton/IconButton';
+import useCompare from 'hooks/useCompare';
 import { Todo } from 'modules/todos';
-import React, { ChangeEvent, useEffect, useRef, useState } from 'react';
+import React, {
+  ChangeEvent,
+  KeyboardEvent,
+  MouseEvent,
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+} from 'react';
+import { keyPressUtils } from 'utils/event';
 import { TodoItemLiStyle } from './TodoItem.styled';
 
 type TodoItemProps = {
@@ -25,22 +35,28 @@ const TodoItem = ({
 
   const editInput = useRef<HTMLInputElement>(null);
 
+  const hasValueChanged = useCompare(value);
+
+  // edit Todo가 실행될 조건 + dispatch 호출 + isFocus 상태 제어
+  const dispatchEditTodo = useCallback(() => {
+    if (hasValueChanged) onEdit(todo.id, value);
+    setIsFocus(false);
+  }, [hasValueChanged, onEdit, todo.id, value]);
+
   // 체크박스 클릭 시 이벤트
   const handleToggleCheckBox = () => onToggle(todo.id);
 
   // 편집 버튼 클릭 시 이벤트 : 편집창으로 focus, 현재 focus 상태 true
-  const handleClickEditButton = (e: React.MouseEvent<HTMLButtonElement>) => {
-    e.stopPropagation();
+  const handleClickEditButton = (e: MouseEvent<HTMLButtonElement>) => {
     editInput.current?.focus();
     setIsFocus(true);
   };
 
   // 확인 버튼 클릭 시 이벤트
-  // - 편집된 value를 인수에 넣어서 dispatch하는 함수 호출
-  // - 편집창에서 blur, 현재 focus 상태 false
-  const handleClickConfirmButton = (e: React.MouseEvent<HTMLButtonElement>) => {
-    onEdit(todo.id, value);
-    setIsFocus(false);
+  const handleClickConfirmButton = (e: MouseEvent<HTMLButtonElement>) => {
+    e.stopPropagation();
+    console.log('Click ConfirmButton');
+    dispatchEditTodo();
   };
 
   // 편집할 때의 input change 이벤트
@@ -48,23 +64,31 @@ const TodoItem = ({
     setValue(e.target.value);
   };
 
-  // blur 시 edit input 이벤트
-  // todo: any 타입 해결
-  const handleBlurEditInput = (e: any) => {
-    if (e.target === editInput) return;
-    setIsFocus(false);
-  };
-
   // 삭제 버튼 클릭 시 이벤트
   const handleDeleteButton = () => onDelete(todo.id);
 
-  // edit input과 수정 버튼 이외의 외부 클릭 시 focus 상태가 취소되는 이벤트
+  const handleKeyPressCheckBox = (e: KeyboardEvent<HTMLLabelElement>) => {
+    if (e.key === 'Enter') onToggle(todo.id);
+  };
+
+  const handleKeyPressEditInput = (e: KeyboardEvent<HTMLInputElement>) =>
+    keyPressUtils(e, 'Enter', dispatchEditTodo);
+
   useEffect(() => {
-    window.addEventListener('click', handleBlurEditInput);
+    // blur 시 edit input 이벤트
+    const handleBlurEditInput = (e: any) => {
+      // edit input과 수정 버튼 이외의 외부 클릭 시 focus 상태가 취소되는 이벤트
+      if (e.target !== editInput.current) {
+        console.log('blur EditInput');
+        dispatchEditTodo();
+      }
+    };
+
+    if (isFocus) window.addEventListener('click', handleBlurEditInput);
     return () => {
       window.removeEventListener('click', handleBlurEditInput);
     };
-  });
+  }, [dispatchEditTodo, isFocus, onEdit, todo.id, todo.text, value]);
 
   return (
     <TodoItemLiStyle key={todo.id} inputFocus={isFocus}>
@@ -76,6 +100,7 @@ const TodoItem = ({
         color="gray-light"
         checked={todo.done}
         onChange={handleToggleCheckBox}
+        onKeyPress={handleKeyPressCheckBox}
       />
       <EditInput
         type="text"
@@ -86,6 +111,7 @@ const TodoItem = ({
         done={todo.done}
         onChange={handleChangeEditInput}
         inputSize={iconSize}
+        onKeyPress={handleKeyPressEditInput}
       />
       {isFocus ? (
         <IconButton
