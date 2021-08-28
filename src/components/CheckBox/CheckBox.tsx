@@ -18,7 +18,9 @@ export type CheckBoxWrapperProps = {
   iconSize: string;
 };
 
-export type CheckBoxLabelProps = {};
+export type CheckBoxLabelProps = {
+  onKeyPress?: (e: React.KeyboardEvent<HTMLLabelElement>) => void;
+};
 
 export type CheckBoxInputProps = {
   id?: string;
@@ -37,14 +39,14 @@ const CheckBox = ({
   checked,
   children,
   onChange,
-
+  onKeyPress,
   shape,
   color,
   iconSize,
 }: CheckBoxProps) => {
   return (
     <CheckBoxWrapper iconSize={iconSize} shape={shape}>
-      <CheckBoxLabel>
+      <CheckBoxLabel tabIndex={0} onKeyPress={onKeyPress}>
         {checked ? (
           <Icon id={id} shape={`checked-${shape}`} color={color} />
         ) : (
@@ -58,6 +60,7 @@ const CheckBox = ({
           aria-label={title}
           checked={checked}
           onChange={onChange}
+          tabIndex={-1}
         />
         {children}
       </CheckBoxLabel>
