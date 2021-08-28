@@ -5,12 +5,14 @@ import useCompare from 'hooks/useCompare';
 import { Todo } from 'modules/todos';
 import React, {
   ChangeEvent,
+  KeyboardEvent,
   MouseEvent,
   useCallback,
   useEffect,
   useRef,
   useState,
 } from 'react';
+import { keyPressUtils } from 'utils/event';
 import { TodoItemLiStyle } from './TodoItem.styled';
 
 type TodoItemProps = {
@@ -35,6 +37,7 @@ const TodoItem = ({
 
   const hasValueChanged = useCompare(value);
 
+  // edit Todo가 실행될 조건 + dispatch 호출 + isFocus 상태 제어
   const dispatchEditTodo = useCallback(() => {
     if (hasValueChanged) onEdit(todo.id, value);
     setIsFocus(false);
@@ -64,6 +67,13 @@ const TodoItem = ({
   // 삭제 버튼 클릭 시 이벤트
   const handleDeleteButton = () => onDelete(todo.id);
 
+  const handleKeyPressCheckBox = (e: KeyboardEvent<HTMLLabelElement>) => {
+    if (e.key === 'Enter') onToggle(todo.id);
+  };
+
+  const handleKeyPressEditInput = (e: KeyboardEvent<HTMLInputElement>) =>
+    keyPressUtils(e, 'Enter', dispatchEditTodo);
+
   useEffect(() => {
     // blur 시 edit input 이벤트
     const handleBlurEditInput = (e: any) => {
@@ -90,6 +100,7 @@ const TodoItem = ({
         color="gray-light"
         checked={todo.done}
         onChange={handleToggleCheckBox}
+        onKeyPress={handleKeyPressCheckBox}
       />
       <EditInput
         type="text"
@@ -100,6 +111,7 @@ const TodoItem = ({
         done={todo.done}
         onChange={handleChangeEditInput}
         inputSize={iconSize}
+        onKeyPress={handleKeyPressEditInput}
       />
       {isFocus ? (
         <IconButton
