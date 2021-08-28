@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { theme } from 'styles/theme';
 import { handlePaddingSize } from 'utils/style';
+import { TodoAddFormProps } from './TodoAdd';
 
 const { colors } = theme;
 
@@ -20,11 +21,7 @@ const handleWidthSize = (size: string | undefined) => {
   }
 };
 
-type TodoAddWrapperProps = {
-  inputSize?: string;
-};
-
-export const TodoAddWrapper = styled.div<TodoAddWrapperProps>`
+export const TodoAddForm = styled.form<TodoAddFormProps>`
   ${({ theme }) => theme.flexes.row('start')};
   width: ${({ inputSize }) => handleWidthSize(inputSize)};
   padding: ${({ inputSize }) => handlePaddingSize(inputSize)};
@@ -42,4 +39,4 @@ export const TodoAddWrapper = styled.div<TodoAddWrapperProps>`
   }
 `;
 
-TodoAddWrapper.displayName = 'TodoAddWrapper';
+TodoAddForm.displayName = 'TodoAddForm';
