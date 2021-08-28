@@ -21,7 +21,8 @@ export const TodoItemLiStyle = styled.li<TodoItemLiProps>`
   -webkit-transition: 200ms;
   -webkit-transition-timing-function: ease-in-out;
 
-  &:hover {
+  &:hover,
+  &:focus {
     box-shadow: ${theme.boxShadow.default};
 
     ${EditInputStyle} {
