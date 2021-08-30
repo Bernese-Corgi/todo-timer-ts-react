@@ -1,12 +1,21 @@
 import React from 'react';
+import { WrittenDateStyle } from './WrittenDate.styled';
 
 const WrittenDate = () => {
   const writtenDate: Date = new Date();
 
-  const dayNamesKR = ['일', '월', '화', '수', '목', '금', '토'];
-  const dayNamesEN = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+  const dayNamesKR: Array<string> = ['일', '월', '화', '수', '목', '금', '토'];
+  const dayNamesEN: Array<string> = [
+    'Sun',
+    'Mon',
+    'Tue',
+    'Wed',
+    'Thu',
+    'Fri',
+    'Sat',
+  ];
 
-  const getDayByDeviceLanguage = (today: Date) => {
+  const getDayByDeviceLanguage = (today: Date): string => {
     if (navigator.language === 'ko-KR') return dayNamesKR[today.getDay()];
     else return dayNamesEN[today.getDay()];
   };
@@ -16,7 +25,7 @@ const WrittenDate = () => {
     .replaceAll('.', '/')
     .replaceAll(' ', '')} ${getDayByDeviceLanguage(writtenDate)}`;
 
-  return <span>{content}</span>;
+  return <WrittenDateStyle>{content}</WrittenDateStyle>;
 };
 
 export default WrittenDate;
