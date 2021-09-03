@@ -1,9 +1,11 @@
 import React from 'react';
 import { WrittenDateStyle } from './WrittenDate.styled';
 
-const WrittenDate = () => {
-  const writtenDate: Date = new Date();
+type WrittenDateProps = {
+  writtenDate: Date;
+};
 
+const WrittenDate = ({ writtenDate }: WrittenDateProps) => {
   const dayNamesKR: Array<string> = ['일', '월', '화', '수', '목', '금', '토'];
   const dayNamesEN: Array<string> = [
     'Sun',
@@ -22,7 +24,6 @@ const WrittenDate = () => {
 
   const content: string = `${writtenDate
     .toLocaleDateString()
-    .replaceAll('.', '/')
     .replaceAll(' ', '')} ${getDayByDeviceLanguage(writtenDate)}`;
 
   return <WrittenDateStyle>{content}</WrittenDateStyle>;
