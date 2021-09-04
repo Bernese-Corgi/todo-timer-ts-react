@@ -100,16 +100,23 @@ export const HandWrapper = styled.div`
   height: 95%;
 `;
 
-export const Hour = styled.div`
+type HandProps = {
+  degree: number;
+};
+
+export const Hour = styled.div<HandProps>`
   ${handleClockHandType('63%', '0.4em', `${theme.colors.gray.dark}`, 10)}
+  ${({ degree }) => `transform: rotate(${degree}deg)`}
 `;
 
-export const Minute = styled.div`
+export const Minute = styled.div<HandProps>`
   ${handleClockHandType('80%', '0.3em', `${theme.colors.gray.dark}`, 3)}
+  ${({ degree }) => `transform: rotate(${degree}deg)`}
 `;
 
-export const Second = styled.div`
+export const Second = styled.div<HandProps>`
   ${handleClockHandType('85%', '0.2em', `${theme.colors.red}`, 1)}
+  ${({ degree }) => `transform: rotate(${degree}deg)`}
 `;
 
 export const OuterClockFace = styled.div`
