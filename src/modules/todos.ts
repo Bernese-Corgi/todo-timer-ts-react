@@ -5,11 +5,12 @@ export const DELETE_TODO = 'todos/removeTodo' as const;
 
 let nextId = 1;
 
-export const addTodo = (text: string) => ({
+export const addTodo = (text: string, writtenDate: Date) => ({
   type: ADD_TODO,
   payload: {
     id: nextId++,
     text,
+    writtenDate,
   },
 });
 
@@ -35,6 +36,7 @@ export type Todo = {
   id: number;
   text: string;
   done: boolean;
+  writtenDate: Date;
 };
 
 export type TodosAction =
@@ -58,6 +60,7 @@ function todoReducer(
         id: action.payload.id,
         text: action.payload.text,
         done: false,
+        writtenDate: action.payload.writtenDate,
       });
     case TOGGLE_TODO:
       return state.map(todo =>
