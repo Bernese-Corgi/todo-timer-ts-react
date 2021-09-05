@@ -116,11 +116,9 @@ const positions = {
     `,
     center: `
       position: absolute;
-      margin-left: auto;
-      margin-right: auto;
-      left: 0;
-      right: 0;
-      text-align: center;
+      top: 50%;
+      left: 50%;
+      transform: translateX(-50%) translateY(-50%);
     `,
   },
 };
