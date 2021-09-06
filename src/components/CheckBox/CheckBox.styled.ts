@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { theme } from 'styles/theme';
 import {
   handleFontSize,
   handleHoverColorType,
@@ -22,12 +23,12 @@ export const CheckBoxWrapper = styled.div<CheckBoxWrapperProps>`
 `;
 
 export const CheckBoxLabel = styled.label<CheckBoxLabelProps>`
-  ${({ theme }) => theme.positions.absolute.center}
+  ${theme.positions.absolute.center}
   cursor: pointer;
 `;
 
 export const CheckBoxInput = styled.input<CheckBoxInputProps>`
-  ${({ theme }) => theme.positions.absolute.center}
+  ${theme.positions.absolute.center}
   z-index: 100;
   opacity: 0;
 `;
