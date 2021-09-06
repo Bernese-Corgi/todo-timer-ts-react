@@ -5,7 +5,7 @@ import { TodoAddForm } from './TodoAdd.styled';
 
 export type TodoAddProps = {
   inputSize?: string;
-  onInput: (value: string) => void;
+  onInput: (value: string, wittenDate: Date) => void;
 };
 
 export type TodoAddFormProps = {
@@ -16,6 +16,9 @@ const TodoAdd = ({ inputSize, onInput }: TodoAddProps) => {
   const size = 'base';
   const [value, setValue] = useState('');
   const [isChange, setIsChange] = useState(false);
+
+  // ANCHOR 지우기
+  const writtenDate: Date = new Date('2020/7/24/12:30');
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     setValue(e.target.value);
@@ -30,7 +33,7 @@ const TodoAdd = ({ inputSize, onInput }: TodoAddProps) => {
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
     if (!value) return;
-    onInput(value);
+    onInput(value, writtenDate);
     setValue('');
   };
 
