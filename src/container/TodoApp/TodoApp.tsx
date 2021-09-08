@@ -18,8 +18,8 @@ const TodoApp = () => {
   // TodoInput에 사용할 change 이벤트 : addTodo를 디스패치 한다.
   // 할일 1. text에 todo 전달하기 (TodoInput에서 수행) -> nonononono input에서는 그럴 필요가 없다. todo input에 작성되는 Value를 전달하는 이벤트 함수를 생성하면 됨
   // 할일 2. todo를 컴포넌트에 전달하기
-  const handleChangeInput = (text: string) => {
-    dispatch(addTodo(text));
+  const handleChangeInput = (text: string, writtenDate: Date) => {
+    dispatch(addTodo(text, writtenDate));
   };
 
   const handleToggleItem = (id: number) => {

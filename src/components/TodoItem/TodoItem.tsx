@@ -1,7 +1,6 @@
 import CheckBox from 'components/CheckBox/CheckBox';
 import EditInput from 'components/EditInput/EditInput';
 import IconButton from 'components/IconButton/IconButton';
-import WrittenDate from 'components/WrittenDate/WrittenDate';
 import useCompare from 'hooks/useCompare';
 import { Todo } from 'modules/todos';
 import React, {
@@ -77,7 +76,7 @@ const TodoItem = ({
 
   useEffect(() => {
     // blur 시 edit input 이벤트
-    const handleBlurEditInput = (e: any) => {
+    const blurEditInput = (e: any) => {
       // edit input과 수정 버튼 이외의 외부 클릭 시 focus 상태가 취소되는 이벤트
       if (e.target !== editInput.current) {
         console.log('blur EditInput');
@@ -85,66 +84,63 @@ const TodoItem = ({
       }
     };
 
-    if (isFocus) window.addEventListener('click', handleBlurEditInput);
+    if (isFocus) window.addEventListener('click', blurEditInput);
     return () => {
-      window.removeEventListener('click', handleBlurEditInput);
+      window.removeEventListener('click', blurEditInput);
     };
   }, [dispatchEditTodo, isFocus, onEdit, todo.id, todo.text, value]);
 
   return (
-    <>
-      <WrittenDate />
-      <TodoItemLiStyle key={todo.id} inputFocus={isFocus}>
-        <CheckBox
-          id="toggleTodo"
-          name="toggleTodo"
-          title={todo.done ? '완료되지 않음 표시하기' : '완료됨 표시하기'}
-          shape="circle"
-          color="gray-light"
-          checked={todo.done}
-          onChange={handleToggleCheckBox}
-          onKeyPress={handleKeyPressCheckBox}
-        />
-        <EditInput
-          type="text"
-          id="editTodoInput"
-          value={value}
-          ref={editInput}
-          readOnly={!isFocus}
-          done={todo.done}
-          onChange={handleChangeEditInput}
-          inputSize={iconSize}
-          onKeyPress={handleKeyPressEditInput}
-        />
-        {isFocus ? (
-          <IconButton
-            id="confirmButton"
-            title="수정완료"
-            shape="confirm"
-            color="gray-light"
-            onClick={handleClickConfirmButton}
-            iconSize={iconSize}
-          />
-        ) : (
-          <IconButton
-            id="editButton"
-            title="수정하기"
-            shape="edit"
-            color="gray-light"
-            onClick={handleClickEditButton}
-            iconSize={iconSize}
-          />
-        )}
+    <TodoItemLiStyle key={todo.id} inputFocus={isFocus}>
+      <CheckBox
+        id="toggleTodo"
+        name="toggleTodo"
+        title={todo.done ? '완료되지 않음 표시하기' : '완료됨 표시하기'}
+        shape="circle"
+        color="gray-light"
+        checked={todo.done}
+        onChange={handleToggleCheckBox}
+        onKeyPress={handleKeyPressCheckBox}
+      />
+      <EditInput
+        type="text"
+        id="editTodoInput"
+        value={value}
+        ref={editInput}
+        readOnly={!isFocus}
+        done={todo.done}
+        onChange={handleChangeEditInput}
+        inputSize={iconSize}
+        onKeyPress={handleKeyPressEditInput}
+      />
+      {isFocus ? (
         <IconButton
-          id="deleteButton"
-          shape="delete"
-          title="삭제하기"
+          id="confirmButton"
+          title="수정완료"
+          shape="confirm"
           color="gray-light"
-          onClick={handleDeleteButton}
+          onClick={handleClickConfirmButton}
           iconSize={iconSize}
         />
-      </TodoItemLiStyle>
-    </>
+      ) : (
+        <IconButton
+          id="editButton"
+          title="수정하기"
+          shape="edit"
+          color="gray-light"
+          onClick={handleClickEditButton}
+          iconSize={iconSize}
+        />
+      )}
+      <IconButton
+        id="deleteButton"
+        shape="delete"
+        title="삭제하기"
+        color="gray-light"
+        onClick={handleDeleteButton}
+        iconSize={iconSize}
+      />
+    </TodoItemLiStyle>
   );
 };
 
