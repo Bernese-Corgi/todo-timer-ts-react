@@ -1,6 +1,6 @@
 import IconButton from 'components/IconButton/IconButton';
 import Input from 'components/Input/Input';
-import React, { ChangeEvent, FormEvent, MouseEvent, useState } from 'react';
+import React, { ChangeEvent, FormEvent, MouseEvent, useRef, useState } from 'react';
 import { TodoAddForm } from './TodoAdd.styled';
 
 export type TodoAddProps = {
@@ -16,6 +16,8 @@ const TodoAdd = ({ inputSize, onInput }: TodoAddProps) => {
   const size = 'base';
   const [value, setValue] = useState('');
   const [isChange, setIsChange] = useState(false);
+  
+  const addInput = useRef<HTMLInputElement>(null);
 
   // ANCHOR 지우기
   const writtenDate: Date = new Date('2020/7/24/12:30');
@@ -34,7 +36,9 @@ const TodoAdd = ({ inputSize, onInput }: TodoAddProps) => {
     e.preventDefault();
     if (!value) return;
     onInput(value, writtenDate);
+    addInput.current?.focus();
     setValue('');
+    setIsChange(false);
   };
 
   return (
@@ -44,6 +48,7 @@ const TodoAdd = ({ inputSize, onInput }: TodoAddProps) => {
         value={value}
         onChange={handleChange}
         inputSize={size}
+        ref={addInput}
       />
       {isChange && (
         <IconButton
