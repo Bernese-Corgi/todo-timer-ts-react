@@ -13,11 +13,6 @@ import {
   InnerClockFace,
 } from './AnalogClock.styled';
 
-type initialStateType = {
-  sec: number;
-  min: number;
-  hour: number;
-};
 
 const AnalogClock = () => {
   const now = new Date();
