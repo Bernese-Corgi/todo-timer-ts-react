@@ -1,6 +1,5 @@
-import IconButton from 'components/IconButton/IconButton';
-import Input from 'components/Input/Input';
 import React, { ChangeEvent, FormEvent, MouseEvent, useState } from 'react';
+import { IconButton, Input } from 'components';
 import { TodoAddForm } from './TodoAdd.styled';
 
 export type TodoAddProps = {

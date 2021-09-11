@@ -1,10 +1,9 @@
 import React from 'react';
-import { AnalogClock } from 'components';
-import HeaderBar from 'container/HeaderBar/HeaderBar';
-import TodoApp from 'container/TodoApp/TodoApp';
 import { ThemeProvider } from 'styled-components';
 import { GlobalStyle } from 'styles/global-style';
 import { theme } from 'styles/theme';
+import { AnalogClock } from 'components';
+import { TodoApp } from 'container';
 
 function App() {
   return (
@@ -12,7 +11,6 @@ function App() {
         <GlobalStyle />
         <AnalogClock />
         <TodoApp />
-        <HeaderBar/>
       </ThemeProvider>
   );
 }

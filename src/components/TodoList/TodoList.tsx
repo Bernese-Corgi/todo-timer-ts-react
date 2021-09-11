@@ -1,4 +1,4 @@
-import TodoItem from 'components/TodoItem/TodoItem';
+import { TodoItem } from 'components';
 import { Todo } from 'modules/todos';
 import React from 'react';
 import { TodoListStyle } from './TodoList.styled';

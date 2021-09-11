@@ -1,5 +1,5 @@
 import React from 'react';
-import Icon from 'components/Icon/Icon';
+import { Icon } from 'components';
 import { IconButtonStyle } from './IconButton.style';
 
 export type IconButtonProps = IconButtonStyleProps & {

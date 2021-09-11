@@ -1,7 +1,5 @@
-import CheckBox from 'components/CheckBox/CheckBox';
-import EditInput from 'components/EditInput/EditInput';
-import IconButton from 'components/IconButton/IconButton';
-import useCompare from 'hooks/useCompare';
+import { CheckBox, EditInput, IconButton } from 'components';
+import { useCompare } from 'hooks';
 import { Todo } from 'modules/todos';
 import React, {
   ChangeEvent,
