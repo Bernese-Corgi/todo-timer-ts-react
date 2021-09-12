@@ -1,9 +1,8 @@
 import React from 'react';
-import { RootState } from 'modules';
-import { addTodo, deleteTodo, editTodo, toggleTodo } from 'modules/todos';
 import { useDispatch, useSelector } from 'react-redux';
-import TodoAdd from 'components/TodoAdd/TodoAdd';
-import TodoList from 'components/TodoList/TodoList';
+import { addTodo, deleteTodo, editTodo, toggleTodo } from 'modules/todos';
+import { RootState } from 'modules';
+import { TodoAdd, TodoList } from 'components';
 
 const TodoApp = () => {
   // size 설정

@@ -1,12 +1,12 @@
 import { useEffect, useState } from 'react';
 
-export const useDateDegree = (now: Date) => {
+const useDateDegree = (now:Date) => {
   type initialStateType = {
     sec: number;
     min: number;
     hour: number;
   };
-
+  
   const initialState: initialStateType = {
     sec: (now.getSeconds() / 60) * 360,
     min: (now.getMinutes() / 60) * 360 + (now.getSeconds() / 60) * 6,
@@ -15,10 +15,10 @@ export const useDateDegree = (now: Date) => {
   const [secDegree, setSecDegree] = useState(initialState.sec);
   const [minDegree, setMinDegree] = useState(initialState.min);
   const [hourDegree, setHourDegree] = useState(initialState.hour);
-
+  
   useEffect(() => {
     let id = setInterval(() => {
-      // const now = new Date();
+      const now = new Date();
       const seconds = now.getSeconds();
       const secondsDegrees = (seconds / 60) * 360;
 
@@ -31,15 +31,16 @@ export const useDateDegree = (now: Date) => {
       setSecDegree(secondsDegrees);
       setMinDegree(minsDegrees);
       setHourDegree(hourDegrees);
-
-      console.log(now, seconds, mins, hour);
     }, 1000);
 
     return () => clearInterval(id);
   }, [now]);
+  
   return {
     secDegree,
     minDegree,
     hourDegree,
   };
 };
+
+export default useDateDegree;

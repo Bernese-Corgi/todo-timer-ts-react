@@ -1,4 +1,4 @@
-import Icon from 'components/Icon/Icon';
+import { Icon } from 'components';
 import React, { ChangeEvent } from 'react';
 import {
   CheckBoxInput,

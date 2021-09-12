@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from 'react';
-import { useDateDegree } from 'hooks/useDateDegree';
+ㄴimport React from 'react';
+import { useDateDegree } from 'hooks';
+
 import {
   AnalogClockWrapper,
   HandWrapper,
@@ -13,10 +14,10 @@ import {
   InnerClockFace,
 } from './AnalogClock.styled';
 
-
 const AnalogClock = () => {
-  const now = new Date();
-  const degrees = useDateDegree(now);
+  const { hourDegree,
+    minDegree,
+    secDegree } = useDateDegree(new Date());
 
   return (
     <AnalogClockWrapper>
@@ -26,9 +27,9 @@ const AnalogClock = () => {
         <OuterMarkThree />
         <InnerClockFace />
         <HandWrapper>
-          <Hour degree={degrees.hourDegree} />
-          <Minute degree={degrees.minDegree} />
-          <Second degree={degrees.secDegree} />
+          <Hour degree={hourDegree} />
+          <Minute degree={minDegree} />
+          <Second degree={secDegree} />
         </HandWrapper>
       </OuterClockFace>
     </AnalogClockWrapper>
