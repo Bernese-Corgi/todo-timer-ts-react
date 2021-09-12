@@ -1,4 +1,4 @@
-ㄴimport React from 'react';
+import React from 'react';
 import { useDateDegree } from 'hooks';
 
 import {
